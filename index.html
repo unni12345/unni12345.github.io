@@ -8,18 +8,32 @@
   <title>Raj Krishnan V</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
   <style>
+    :root {
+      --primary-color: #004d99;
+      --accent-color: #008dcf;
+      --bg-light: #f8f9fa;
+      --text-color: #111;
+      --gray: #666;
+    }
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      color: #111;
+      color: var(--text-color);
       background-color: #fff;
       line-height: 1.6;
     }
     header {
       text-align: center;
       padding: 3rem 1rem 2rem;
-      background-color: #f5f5f5;
+      background-color: var(--bg-light);
+    }
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
     }
     header h1 {
       font-size: 2rem;
@@ -28,7 +42,7 @@
     header h2 {
       font-size: 1.2rem;
       font-weight: 400;
-      color: #444;
+      color: var(--gray);
     }
     main {
       max-width: 720px;
@@ -48,23 +62,48 @@
       padding-left: 1.5rem;
     }
     a {
-      color: #0366d6;
+      color: var(--primary-color);
       text-decoration: none;
     }
     footer {
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.9rem;
-      background-color: #f5f5f5;
-      color: #666;
+      background-color: var(--bg-light);
+      color: var(--gray);
+    }
+    .links a {
+      margin: 0 0.5rem;
+      color: var(--accent-color);
+    }
+    .resume-container {
+      text-align: center;
+    }
+    .resume-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
   <header>
+    <img src="images/avatar.jpg" alt="Raj Krishnan V" />
     <h1>Raj Krishnan V</h1>
     <h2>Applied ML Researcher | Clinical AI | LLM Evaluation</h2>
-    <p>Email: <a href="mailto:raj.vijayaraj@mail.utoronto.ca">raj.vijayaraj@mail.utoronto.ca</a> | <a href="https://github.com/unni12345">GitHub</a> | <a href="https://www.linkedin.com/in/raj-krishnan-vijayaraj-800727128/">LinkedIn</a></p>
+    <p class="links">
+      <a href="mailto:raj.vijayaraj@mail.utoronto.ca">Email</a>
+      <a href="https://x.com/raj_krishnan_v">Twitter</a>
+      <a href="https://scholar.google.com/citations?hl=en&user=JRB869AAAAAJ">Google Scholar</a>
+      <a href="https://github.com/unni12345">GitHub</a>
+      <a href="https://www.linkedin.com/in/raj-krishnan-vijayaraj-800727128/">LinkedIn</a>
+    </p>
   </header>
 
   <main>
@@ -94,6 +133,13 @@
         <li><strong>PII Guard</strong>: LLM-based privacy masking and utility-preserving redaction</li>
         <li><strong>Multimodal LLM</strong>: Medical vision-language model using BLIP-2 and FSDP</li>
       </ul>
+    </section>
+
+    <section>
+      <h3>Résumé</h3>
+      <div class="resume-container">
+        <a href="/mnt/data/raj_kv_resume.pdf" class="resume-button" target="_blank">View Résumé (PDF)</a>
+      </div>
     </section>
 
     <section>
