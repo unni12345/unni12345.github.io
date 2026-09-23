@@ -1,309 +1,659 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Raj Krishnan Vijayaraj - Machine Learning Engineer specializing in GenAI, LLM evaluation, and production ML infrastructure">
-  <meta name="author" content="Raj Krishnan Vijayaraj">
-  <title>Raj Krishnan Vijayaraj</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
-  <style>
-    :root {
-      --primary-color: #004d99;
-      --accent-color: #008dcf;
-      --bg-light: #f8f9fa;
-      --text-color: #111;
-      --gray: #666;
-      --border: #eee;
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {}
+  })();
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Raj Krishnan Vijayaraj — Machine Learning Engineer building production GenAI systems and researching LLM robustness and evaluation." />
+<meta name="author" content="Raj Krishnan Vijayaraj" />
+<meta name="theme-color" content="#0d1117" />
+<meta property="og:title" content="Raj Krishnan Vijayaraj — Machine Learning Engineer" />
+<meta property="og:description" content="Machine Learning Engineer building production GenAI systems and researching LLM robustness and evaluation." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://unni12345.github.io/" />
+<meta property="og:image" content="https://unni12345.github.io/images/avatar.jpg" />
+<meta name="twitter:card" content="summary" />
+<title>Raj Krishnan Vijayaraj — Machine Learning Engineer</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23335eea'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3ERV%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+<style>
+  :root[data-theme="light"] {
+    --bg: #ffffff;
+    --bg-elevated: #ffffff;
+    --bg-subtle: #f4f6f9;
+    --text: #0f1419;
+    --text-muted: #57606a;
+    --text-faint: #8a94a3;
+    --border: #e4e8ee;
+    --accent: #335eea;
+    --accent-soft: #eaefff;
+    --tag-bg: #eef1f6;
+    --tag-text: #454e5c;
+    --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.06);
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0e14;
+    --bg-elevated: #10141c;
+    --bg-subtle: #11151d;
+    --text: #e6edf3;
+    --text-muted: #9aa5b3;
+    --text-faint: #6b7685;
+    --border: #232a35;
+    --accent: #5b8dfb;
+    --accent-soft: #172140;
+    --tag-bg: #171d29;
+    --tag-text: #aab4c4;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.24);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  a { color: inherit; text-decoration: none; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  .layout {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 330px;
+    height: 100vh;
+    padding: 3.5rem 2.25rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+  }
+  .sidebar-top img.avatar {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    margin-bottom: 1.25rem;
+  }
+  .sidebar h1 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0 0 0.35rem;
+    letter-spacing: -0.01em;
+  }
+  .sidebar .role {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 0.75rem;
+  }
+  .sidebar .bio {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin: 0 0 1.5rem;
+  }
+  .sidebar .meta-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    margin-bottom: 0.4rem;
+  }
+  .sidebar .meta-row i { width: 14px; text-align: center; color: var(--text-faint); }
+
+  nav.section-nav {
+    margin-top: 2.25rem;
+  }
+  nav.section-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  nav.section-nav li { margin-bottom: 0.15rem; }
+  nav.section-nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0;
+    font-size: 0.83rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    transition: color 0.15s ease;
+  }
+  nav.section-nav a .dash {
+    width: 20px;
+    height: 1.5px;
+    background: var(--text-faint);
+    transition: all 0.15s ease;
+  }
+  nav.section-nav a:hover,
+  nav.section-nav a.active {
+    color: var(--text);
+  }
+  nav.section-nav a.active .dash {
+    width: 34px;
+    background: var(--accent);
+  }
+
+  .sidebar-bottom { margin-top: 2rem; }
+  .social-row {
+    display: flex;
+    gap: 1.1rem;
+    margin-bottom: 1.25rem;
+  }
+  .social-row a {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+  .social-row a:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .resume-btn:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.45rem 0.75rem;
+    cursor: pointer;
+  }
+  .theme-toggle:hover { color: var(--text); border-color: var(--text-faint); }
+
+  /* ---------- Content ---------- */
+  main.content {
+    margin-left: 330px;
+    flex: 1;
+    padding: 4rem 3rem 6rem;
+    max-width: 760px;
+  }
+  section { margin-bottom: 4rem; scroll-margin-top: 2rem; }
+  section:last-of-type { margin-bottom: 2.5rem; }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+    margin: 0 0 1.5rem;
+  }
+  .section-heading::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  #about p { color: var(--text-muted); font-size: 1rem; margin: 0 0 1rem; }
+  #about p:last-child { margin-bottom: 0; }
+
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76rem;
+    padding: 0.3rem 0.6rem;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+
+  .job {
+    padding: 1rem 0.75rem;
+    margin: 0 -0.75rem 0.25rem;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+  }
+  .job:hover { background: var(--bg-subtle); }
+  .job-dates {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--text-faint);
+    margin: 0 0 0.3rem;
+  }
+  .job-title { font-size: 1rem; font-weight: 700; margin: 0; }
+  .job-org { font-size: 0.88rem; color: var(--accent); font-weight: 600; margin: 0.1rem 0 0.6rem; }
+  .job ul { margin: 0 0 0.75rem; padding-left: 1.1rem; color: var(--text-muted); font-size: 0.92rem; }
+  .job ul li { margin-bottom: 0.35rem; }
+  .job .tag-cloud { margin-top: 0.5rem; }
+
+  .pub-card, .project-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.4rem;
+    margin-bottom: 1rem;
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow);
+  }
+  .pub-card .pub-title { font-weight: 700; font-size: 0.98rem; margin: 0 0 0.35rem; }
+  .pub-card .pub-meta { font-size: 0.85rem; color: var(--text-muted); margin: 0 0 0.75rem; }
+  .pub-card .pub-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .pub-card .pub-links a:hover { text-decoration: underline; }
+
+  .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .project-card .project-icon {
+    width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+  }
+  .project-card .project-title { font-weight: 700; font-size: 0.95rem; margin: 0 0 0.4rem; }
+  .project-card p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+
+  .edu-item { padding: 0.5rem 0.75rem; margin: 0 -0.75rem 0.5rem; }
+  .edu-item .edu-dates { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.03em; color: var(--text-faint); margin-bottom: 0.3rem; }
+  .edu-item .edu-school { font-weight: 700; font-size: 0.95rem; margin: 0 0 0.15rem; }
+  .edu-item .edu-detail { font-size: 0.85rem; color: var(--text-muted); }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem 2rem; }
+  .skills-grid h4 {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-faint);
+    margin: 0 0 0.6rem;
+  }
+
+  footer.page-footer {
+    margin-left: 330px;
+    padding: 2rem 3rem 3rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  footer.page-footer a { color: var(--text-faint); }
+  footer.page-footer a:hover { color: var(--accent); }
+
+  @media (max-width: 1023px) {
+    .layout { flex-direction: column; }
+    .sidebar {
+      position: static;
+      width: 100%;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 1.5rem 2rem;
     }
-    * { box-sizing: border-box; }
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      color: var(--text-color);
-      background-color: #fff;
-      line-height: 1.6;
-    }
-    header {
-      text-align: center;
-      padding: 3rem 1rem 2rem;
-      background-color: var(--bg-light);
-    }
-    header img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.4rem;
-    }
-    header h2 {
-      font-size: 1.15rem;
-      font-weight: 400;
-      color: var(--gray);
-      margin: 0 0 0.75rem;
-    }
-    header .location {
-      font-size: 0.9rem;
-      color: var(--gray);
-      margin-bottom: 0.75rem;
-    }
-    main {
-      max-width: 760px;
-      margin: auto;
-      padding: 2rem 1rem;
-    }
-    section {
-      margin-bottom: 2.5rem;
-    }
-    h3 {
-      margin-bottom: 0.75rem;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 0.3rem;
-    }
-    ul {
-      list-style-type: disc;
-      padding-left: 1.5rem;
-    }
-    a {
-      color: var(--primary-color);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      background-color: var(--bg-light);
-      color: var(--gray);
-    }
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.25rem 0.75rem;
-    }
-    .links a {
-      color: var(--accent-color);
-      font-weight: 500;
-    }
-    .resume-container {
-      text-align: center;
-    }
-    .resume-button {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.6rem 1.2rem;
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .resume-button:hover {
-      background-color: var(--accent-color);
-      text-decoration: none;
-    }
-    .job {
-      margin-bottom: 1.5rem;
-    }
-    .job:last-child {
-      margin-bottom: 0;
-    }
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 0.25rem 1rem;
-    }
-    .job-title {
-      font-weight: 700;
-      font-size: 1.05rem;
-    }
-    .job-dates {
-      color: var(--gray);
-      font-size: 0.9rem;
-      white-space: nowrap;
-    }
-    .job-org {
-      color: var(--gray);
-      font-style: italic;
-      margin-bottom: 0.4rem;
-    }
-    .skills dt {
-      font-weight: 700;
-      margin-top: 0.75rem;
-    }
-    .skills dd {
-      margin: 0.2rem 0 0;
-      color: var(--text-color);
-    }
-    .edu-item, .pub-item {
-      margin-bottom: 0.75rem;
-    }
-    .edu-title {
-      font-weight: 700;
-    }
-  </style>
+    nav.section-nav { display: none; }
+    main.content { margin-left: 0; padding: 2.5rem 1.5rem 4rem; max-width: 100%; }
+    footer.page-footer { margin-left: 0; padding: 1.5rem; }
+    .project-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
-  <header>
-    <img src="images/avatar.jpg" alt="Raj Krishnan Vijayaraj" />
-    <h1>Raj Krishnan Vijayaraj</h1>
-    <h2>Machine Learning Engineer &mdash; GenAI, LLM Evaluation &amp; Production ML Infrastructure</h2>
-    <p class="location">Toronto, Canada</p>
-    <p class="links">
-      <a href="mailto:rajkrishnanv@gmail.com">Email</a>
-      <a href="tel:+12498760601">+1 (249) 876-0601</a>
-      <a href="https://www.linkedin.com/in/raj-krishnan-vijayaraj-800727128/">LinkedIn</a>
-      <a href="https://github.com/unni12345">GitHub</a>
-      <a href="https://scholar.google.com/citations?hl=en&user=JRB869AAAAAJ">Google Scholar</a>
-    </p>
-  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <img class="avatar" src="images/avatar.jpg" alt="Raj Krishnan Vijayaraj" />
+        <h1>Raj Krishnan Vijayaraj</h1>
+        <p class="role">Machine Learning Engineer</p>
+        <p class="bio">Production GenAI systems &amp; LLM robustness research.</p>
+        <div class="meta-row"><i class="fas fa-map-marker-alt"></i> Toronto, Canada</div>
+        <div class="meta-row"><i class="fas fa-briefcase"></i> Sanofi Vaccines Canada</div>
 
-  <main>
-    <section>
-      <h3>About</h3>
-      <p>
-        I'm a Machine Learning Engineer based in Toronto, currently building production GenAI and bioinformatics
-        infrastructure at Sanofi Vaccines Canada. My work spans the full stack of applied ML: shipping LLM and RAG
-        systems into production, building the cloud infrastructure and CI/CD pipelines they run on, and evaluating
-        model robustness and reliability before they reach users. I hold an M.Eng in Electrical &amp; Computer
-        Engineering from the University of Toronto and a B.Tech in Electrical and Electronics Engineering from
-        NIT Tiruchirappalli.
-      </p>
-    </section>
+        <nav class="section-nav" aria-label="Section navigation">
+          <ul>
+            <li><a href="#about"><span class="dash"></span>About</a></li>
+            <li><a href="#experience"><span class="dash"></span>Experience</a></li>
+            <li><a href="#publications"><span class="dash"></span>Publications</a></li>
+            <li><a href="#projects"><span class="dash"></span>Projects</a></li>
+            <li><a href="#education"><span class="dash"></span>Education</a></li>
+          </ul>
+        </nav>
+      </div>
 
-    <section>
-      <h3>Experience</h3>
-
-      <div class="job">
-        <div class="job-header">
-          <span class="job-title">Machine Learning Engineer (R&amp;D)</span>
-          <span class="job-dates">Nov 2025 &ndash; Present</span>
+      <div class="sidebar-bottom">
+        <a class="resume-btn" href="raj_kv_resume.pdf" target="_blank" rel="noopener">
+          <i class="fas fa-file-download"></i> Résumé (PDF)
+        </a>
+        <div class="social-row">
+          <a href="mailto:rajkrishnanv@gmail.com" aria-label="Email" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/unni12345" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/raj-krishnan-vijayaraj-800727128/" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://scholar.google.com/citations?hl=en&user=JRB869AAAAAJ" aria-label="Google Scholar" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+          <a href="tel:+12498760601" aria-label="Phone" title="+1 (249) 876-0601"><i class="fas fa-phone"></i></a>
         </div>
-        <div class="job-org">Sanofi Vaccines Canada, Toronto, Canada</div>
-        <ul>
-          <li>Cut model deployment time from 4 weeks to 2 days with CI/CD pipelines shipping 20 bioinformatics models to AWS HealthOmics across DEV/UAT/PROD, now used by 100+ research scientists.</li>
-          <li>Built the compliant multi-account infrastructure underneath (ECS Fargate, IAM/OIDC federation, SQS, S3, Lambda) with least-privilege promotion gates, now the reference architecture across Sanofi's R&amp;D platform.</li>
-          <li>Project lead and technical point of contact, directing 3 engineers; own production reliability (retry/DLQ/status propagation, CloudWatch metrics and alarms) and nanobody workflow orchestration.</li>
-          <li>Building an agentic auto-deploy layer that drives the framework end to end, removing the remaining manual promotion steps (in progress).</li>
-        </ul>
+        <button class="theme-toggle" id="theme-toggle" type="button">
+          <i class="fas fa-moon" id="theme-icon"></i> <span id="theme-label">Dark mode</span>
+        </button>
       </div>
+    </aside>
 
-      <div class="job">
-        <div class="job-header">
-          <span class="job-title">Machine Learning Engineer</span>
-          <span class="job-dates">Jul 2024 &ndash; Oct 2025</span>
+    <main class="content">
+      <section id="about">
+        <h2 class="section-heading">About</h2>
+        <p>
+          I build production GenAI and bioinformatics infrastructure at Sanofi Vaccines Canada, and research how
+          large language models fail under adversarial and clinical perturbation. My work spans the full stack of
+          applied ML &mdash; shipping LLM and RAG systems into production, building the cloud infrastructure and
+          CI/CD pipelines they run on, and evaluating model robustness before they reach users.
+        </p>
+        <p>
+          M.Eng in Electrical &amp; Computer Engineering from the University of Toronto (GPA 3.94/4.00) and B.Tech
+          in Electrical and Electronics Engineering from NIT Tiruchirappalli.
+        </p>
+        <div class="tag-cloud" style="margin-top: 1.25rem;">
+          <span class="tag">PyTorch</span>
+          <span class="tag">LangChain</span>
+          <span class="tag">RAG</span>
+          <span class="tag">LoRA / PEFT</span>
+          <span class="tag">FSDP</span>
+          <span class="tag">vLLM</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">CI/CD</span>
         </div>
-        <div class="job-org">Appfabs (contracted to LexisNexis), Toronto, Canada</div>
-        <ul>
-          <li>Shipped production Text-to-SQL and RAG agents (Spark, LangChain, Hugging Face) with distributed multi-node inference on KubeRay and Docker, released through Jenkins.</li>
-          <li>Cut end-to-end query latency by 50% by reworking data processing pipelines, schema indexing, and high-throughput GraphQL/REST API gateways.</li>
-        </ul>
-      </div>
+      </section>
 
-      <div class="job">
-        <div class="job-header">
-          <span class="job-title">Applied Research Intern</span>
-          <span class="job-dates">May 2024 &ndash; Jul 2024</span>
+      <section id="experience">
+        <h2 class="section-heading">Experience</h2>
+
+        <div class="job">
+          <div class="job-dates">Nov 2025 &ndash; Present</div>
+          <div>
+            <h3 class="job-title">Machine Learning Engineer (R&amp;D)</h3>
+            <p class="job-org">Sanofi Vaccines Canada &middot; Toronto, Canada</p>
+            <ul>
+              <li>Cut model deployment time from 4 weeks to 2 days with CI/CD pipelines shipping 20 bioinformatics models to AWS HealthOmics across DEV/UAT/PROD, now used by 100+ research scientists.</li>
+              <li>Built the compliant multi-account infrastructure underneath (ECS Fargate, IAM/OIDC federation, SQS, S3, Lambda) with least-privilege promotion gates, now the reference architecture across Sanofi's R&amp;D platform.</li>
+              <li>Project lead and technical point of contact, directing 3 engineers; own production reliability (retry/DLQ/status propagation, CloudWatch metrics and alarms) and nanobody workflow orchestration.</li>
+              <li>Building an agentic auto-deploy layer that drives the framework end to end, removing the remaining manual promotion steps (in progress).</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="tag">AWS HealthOmics</span>
+              <span class="tag">ECS Fargate</span>
+              <span class="tag">IAM/OIDC</span>
+              <span class="tag">SQS</span>
+              <span class="tag">CloudWatch</span>
+              <span class="tag">CI/CD</span>
+            </div>
+          </div>
         </div>
-        <div class="job-org">Vector Institute, Toronto, Canada</div>
-        <ul>
-          <li>Fine-tuned LLaMA-3.1 across multi-GPU clusters with FSDP and served it behind low-latency vLLM endpoints.</li>
-          <li>Designed a diagnostic RAG system whose chain-of-verification step held hallucinated clinical entities under 1%.</li>
-        </ul>
-      </div>
 
-      <div class="job">
-        <div class="job-header">
-          <span class="job-title">Machine Learning Engineer (Mitacs Fellow)</span>
-          <span class="job-dates">Sep 2022 &ndash; May 2024</span>
+        <div class="job">
+          <div class="job-dates">Jul 2024 &ndash; Oct 2025</div>
+          <div>
+            <h3 class="job-title">Machine Learning Engineer</h3>
+            <p class="job-org">Appfabs (contracted to LexisNexis) &middot; Toronto, Canada</p>
+            <ul>
+              <li>Shipped production Text-to-SQL and RAG agents (Spark, LangChain, Hugging Face) with distributed multi-node inference on KubeRay and Docker, released through Jenkins.</li>
+              <li>Cut end-to-end query latency by 50% by reworking data processing pipelines, schema indexing, and high-throughput GraphQL/REST API gateways.</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="tag">LangChain</span>
+              <span class="tag">RAG</span>
+              <span class="tag">Spark</span>
+              <span class="tag">KubeRay</span>
+              <span class="tag">Docker</span>
+              <span class="tag">GraphQL</span>
+            </div>
+          </div>
         </div>
-        <div class="job-org">Scribble Data, Toronto, Canada (concurrent with MEng)</div>
-        <ul>
-          <li>Benchmarked LoRA against INT8/INT4 quantization, cutting inference memory overhead at minimal accuracy loss and making edge deployment viable.</li>
-          <li>Built privacy-aware LLM agents for legal document analysis with domain masking and automated PII redaction.</li>
-        </ul>
-      </div>
 
-      <div class="job">
-        <div class="job-header">
-          <span class="job-title">Backend Developer</span>
-          <span class="job-dates">Jul 2019 &ndash; Nov 2021</span>
+        <div class="job">
+          <div class="job-dates">May 2024 &ndash; Jul 2024</div>
+          <div>
+            <h3 class="job-title">Applied Research Intern</h3>
+            <p class="job-org">Vector Institute &middot; Toronto, Canada</p>
+            <ul>
+              <li>Fine-tuned LLaMA-3.1 across multi-GPU clusters with FSDP and served it behind low-latency vLLM endpoints.</li>
+              <li>Designed a diagnostic RAG system whose chain-of-verification step held hallucinated clinical entities under 1%.</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="tag">LLaMA-3.1</span>
+              <span class="tag">FSDP</span>
+              <span class="tag">vLLM</span>
+              <span class="tag">RAG</span>
+            </div>
+          </div>
         </div>
-        <div class="job-org">G2, Bengaluru, India</div>
-        <ul>
-          <li>Built high-throughput GraphQL APIs and async ETL (Rails, PostgreSQL, Sidekiq); cut batch data-export runtime from 72 hours to under 20.</li>
-        </ul>
-      </div>
-    </section>
 
-    <section>
-      <h3>Selected Projects</h3>
-      <ul>
-        <li><strong>Eval Harness (SPAR)</strong> &mdash; Score-based robustness metrics for computer-use agents under prompt injection.</li>
-        <li><strong>Multimodal Clinical RAG</strong> &mdash; GPT-4V + ClinicalBERT retrieval with chain-of-verification grounding.</li>
-        <li><strong>Diagnostic LLM Audit</strong> &mdash; Diagnostic LLMs fine-tuned on synthetic notes; perturbation-audited for stability.</li>
-      </ul>
-    </section>
+        <div class="job">
+          <div class="job-dates">Sep 2022 &ndash; May 2024</div>
+          <div>
+            <h3 class="job-title">Machine Learning Engineer (Mitacs Fellow)</h3>
+            <p class="job-org">Scribble Data &middot; Toronto, Canada (concurrent with MEng)</p>
+            <ul>
+              <li>Benchmarked LoRA against INT8/INT4 quantization, cutting inference memory overhead at minimal accuracy loss and making edge deployment viable.</li>
+              <li>Built privacy-aware LLM agents for legal document analysis with domain masking and automated PII redaction.</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="tag">LoRA/PEFT</span>
+              <span class="tag">INT8/INT4</span>
+              <span class="tag">PII Redaction</span>
+            </div>
+          </div>
+        </div>
 
-    <section>
-      <h3>Education</h3>
-      <div class="edu-item">
-        <div class="edu-title">University of Toronto &mdash; M.Eng, Electrical &amp; Computer Engineering</div>
-        <div>GPA: 3.94/4.00 &middot; 2022 &ndash; 2023</div>
-      </div>
-      <div class="edu-item">
-        <div class="edu-title">NIT Tiruchirappalli &mdash; B.Tech, Electrical and Electronics Engineering</div>
-        <div>2015 &ndash; 2019</div>
-      </div>
-    </section>
+        <div class="job">
+          <div class="job-dates">Jul 2019 &ndash; Nov 2021</div>
+          <div>
+            <h3 class="job-title">Backend Developer</h3>
+            <p class="job-org">G2 &middot; Bengaluru, India</p>
+            <ul>
+              <li>Built high-throughput GraphQL APIs and async ETL (Rails, PostgreSQL, Sidekiq); cut batch data-export runtime from 72 hours to under 20.</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="tag">GraphQL</span>
+              <span class="tag">Rails</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Sidekiq</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <section>
-      <h3>Publications</h3>
-      <div class="pub-item">
-        R. K. Vijayaraj. <em>Embeddings to Diagnosis: Latent Fragility under Agentic Perturbations in Clinical LLMs.</em>
-        Workshop on Evaluation of Generative AI, KDD 2025.
-        <a href="https://arxiv.org/abs/2507.21188">arXiv:2507.21188</a>
-      </div>
-    </section>
+      <section id="publications">
+        <h2 class="section-heading">Publications</h2>
+        <div class="pub-card">
+          <p class="pub-title">Embeddings to Diagnosis: Latent Fragility under Agentic Perturbations in Clinical LLMs</p>
+          <p class="pub-meta">R. K. Vijayaraj &middot; Workshop on Evaluation of Generative AI, KDD 2025</p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2507.21188" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> arXiv:2507.21188</a>
+          </div>
+        </div>
+      </section>
 
-    <section>
-      <h3>Skills</h3>
-      <dl class="skills">
-        <dt>ML &amp; GenAI</dt>
-        <dd>PyTorch, Hugging Face, LangChain, RAG, LoRA/PEFT, INT8/INT4 quantization, FSDP, vLLM</dd>
+      <section id="projects">
+        <h2 class="section-heading">Selected Projects</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
+            <p class="project-title">Eval Harness (SPAR)</p>
+            <p>Score-based robustness metrics for computer-use agents under prompt injection.</p>
+          </div>
+          <div class="project-card">
+            <div class="project-icon"><i class="fas fa-notes-medical"></i></div>
+            <p class="project-title">Multimodal Clinical RAG</p>
+            <p>GPT-4V + ClinicalBERT retrieval with chain-of-verification grounding.</p>
+          </div>
+          <div class="project-card">
+            <div class="project-icon"><i class="fas fa-stethoscope"></i></div>
+            <p class="project-title">Diagnostic LLM Audit</p>
+            <p>Diagnostic LLMs fine-tuned on synthetic notes; perturbation-audited for stability.</p>
+          </div>
+        </div>
+      </section>
 
-        <dt>Evaluation &amp; Reliability</dt>
-        <dd>LLM evals, perturbation/robustness auditing, adversarial red-teaming, grounding</dd>
+      <section id="education">
+        <h2 class="section-heading">Education</h2>
+        <div class="edu-item">
+          <div class="edu-dates">2022 &ndash; 2023</div>
+          <div>
+            <p class="edu-school">University of Toronto</p>
+            <p class="edu-detail">M.Eng, Electrical &amp; Computer Engineering &middot; GPA 3.94/4.00</p>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dates">2015 &ndash; 2019</div>
+          <div>
+            <p class="edu-school">NIT Tiruchirappalli</p>
+            <p class="edu-detail">B.Tech, Electrical and Electronics Engineering</p>
+          </div>
+        </div>
+      </section>
 
-        <dt>Systems &amp; Cloud</dt>
-        <dd>AWS (HealthOmics, ECS, SQS, S3, Lambda), Docker, Kubernetes/KubeRay, Terraform, Spark, CI/CD</dd>
+      <section id="skills">
+        <h2 class="section-heading">Skills</h2>
+        <div class="skills-grid">
+          <div>
+            <h4>ML &amp; GenAI</h4>
+            <div class="tag-cloud">
+              <span class="tag">PyTorch</span><span class="tag">Hugging Face</span><span class="tag">LangChain</span>
+              <span class="tag">RAG</span><span class="tag">LoRA/PEFT</span><span class="tag">INT8/INT4</span>
+              <span class="tag">FSDP</span><span class="tag">vLLM</span>
+            </div>
+          </div>
+          <div>
+            <h4>Evaluation &amp; Reliability</h4>
+            <div class="tag-cloud">
+              <span class="tag">LLM Evals</span><span class="tag">Robustness Auditing</span>
+              <span class="tag">Red-teaming</span><span class="tag">Grounding</span>
+            </div>
+          </div>
+          <div>
+            <h4>Systems &amp; Cloud</h4>
+            <div class="tag-cloud">
+              <span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Kubernetes</span>
+              <span class="tag">KubeRay</span><span class="tag">Terraform</span><span class="tag">Spark</span>
+              <span class="tag">CI/CD</span>
+            </div>
+          </div>
+          <div>
+            <h4>Languages &amp; Data</h4>
+            <div class="tag-cloud">
+              <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">C++</span>
+              <span class="tag">Ruby</span><span class="tag">Snowflake</span><span class="tag">GraphQL</span>
+              <span class="tag">REST</span><span class="tag">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 
-        <dt>Languages &amp; Data</dt>
-        <dd>Python, SQL, C++, Ruby, Snowflake, GraphQL, REST, PostgreSQL</dd>
-      </dl>
-    </section>
-
-    <section>
-      <h3>R&eacute;sum&eacute;</h3>
-      <div class="resume-container">
-        <a href="raj_kv_resume.pdf" class="resume-button" target="_blank">View R&eacute;sum&eacute; (PDF)</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2026 Raj Krishnan Vijayaraj.
+  <footer class="page-footer">
+    <span>&copy; 2026 Raj Krishnan Vijayaraj</span>
+    <span><a href="mailto:rajkrishnanv@gmail.com">rajkrishnanv@gmail.com</a> &middot; Toronto, Canada</span>
   </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      var icon = document.getElementById('theme-icon');
+      var label = document.getElementById('theme-label');
+
+      function sync() {
+        var theme = root.getAttribute('data-theme');
+        if (theme === 'dark') {
+          icon.className = 'fas fa-sun';
+          label.textContent = 'Light mode';
+        } else {
+          icon.className = 'fas fa-moon';
+          label.textContent = 'Dark mode';
+        }
+      }
+      sync();
+
+      btn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        sync();
+      });
+
+      var links = document.querySelectorAll('nav.section-nav a');
+      var sections = Array.prototype.map.call(links, function (a) {
+        return document.querySelector(a.getAttribute('href'));
+      });
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            var idx = sections.indexOf(entry.target);
+            if (idx === -1) return;
+            if (entry.isIntersecting) {
+              links.forEach(function (l) { l.classList.remove('active'); });
+              links[idx].classList.add('active');
+            }
+          });
+        }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+        sections.forEach(function (s) { if (s) observer.observe(s); });
+      }
+    })();
+  </script>
 </body>
 </html>
