@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Raj Krishnan V - Machine Learning Researcher in Clinical AI and LLM Robustness">
-  <meta name="author" content="Raj Krishnan V">
-  <title>Raj Krishnan V</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <meta name="description" content="Raj Krishnan Vijayaraj - Machine Learning Engineer specializing in GenAI, LLM evaluation, and production ML infrastructure">
+  <meta name="author" content="Raj Krishnan Vijayaraj">
+  <title>Raj Krishnan Vijayaraj</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
   <style>
     :root {
       --primary-color: #004d99;
@@ -14,7 +14,9 @@
       --bg-light: #f8f9fa;
       --text-color: #111;
       --gray: #666;
+      --border: #eee;
     }
+    * { box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
@@ -37,15 +39,21 @@
     }
     header h1 {
       font-size: 2rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
     header h2 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 400;
       color: var(--gray);
+      margin: 0 0 0.75rem;
+    }
+    header .location {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 0.75rem;
     }
     main {
-      max-width: 720px;
+      max-width: 760px;
       margin: auto;
       padding: 2rem 1rem;
     }
@@ -53,8 +61,8 @@
       margin-bottom: 2.5rem;
     }
     h3 {
-      margin-bottom: 0.5rem;
-      border-bottom: 2px solid #eee;
+      margin-bottom: 0.75rem;
+      border-bottom: 2px solid var(--border);
       padding-bottom: 0.3rem;
     }
     ul {
@@ -65,6 +73,9 @@
       color: var(--primary-color);
       text-decoration: none;
     }
+    a:hover {
+      text-decoration: underline;
+    }
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -72,9 +83,15 @@
       background-color: var(--bg-light);
       color: var(--gray);
     }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.25rem 0.75rem;
+    }
     .links a {
-      margin: 0 0.5rem;
       color: var(--accent-color);
+      font-weight: 500;
     }
     .resume-container {
       text-align: center;
@@ -90,19 +107,65 @@
       font-weight: bold;
       text-decoration: none;
     }
+    .resume-button:hover {
+      background-color: var(--accent-color);
+      text-decoration: none;
+    }
+    .job {
+      margin-bottom: 1.5rem;
+    }
+    .job:last-child {
+      margin-bottom: 0;
+    }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+    }
+    .job-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .job-dates {
+      color: var(--gray);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+    .job-org {
+      color: var(--gray);
+      font-style: italic;
+      margin-bottom: 0.4rem;
+    }
+    .skills dt {
+      font-weight: 700;
+      margin-top: 0.75rem;
+    }
+    .skills dd {
+      margin: 0.2rem 0 0;
+      color: var(--text-color);
+    }
+    .edu-item, .pub-item {
+      margin-bottom: 0.75rem;
+    }
+    .edu-title {
+      font-weight: 700;
+    }
   </style>
 </head>
 <body>
   <header>
-    <img src="images/avatar.jpg" alt="Raj Krishnan V" />
-    <h1>Raj Krishnan V</h1>
-    <h2>Applied ML Researcher | Clinical AI | LLM Evaluation</h2>
+    <img src="images/avatar.jpg" alt="Raj Krishnan Vijayaraj" />
+    <h1>Raj Krishnan Vijayaraj</h1>
+    <h2>Machine Learning Engineer &mdash; GenAI, LLM Evaluation &amp; Production ML Infrastructure</h2>
+    <p class="location">Toronto, Canada</p>
     <p class="links">
-      <a href="mailto:raj.vijayaraj@mail.utoronto.ca">Email</a>
-      <a href="https://x.com/raj_krishnan_v">Twitter</a>
-      <a href="https://scholar.google.com/citations?hl=en&user=JRB869AAAAAJ">Google Scholar</a>
-      <a href="https://github.com/unni12345">GitHub</a>
+      <a href="mailto:rajkrishnanv@gmail.com">Email</a>
+      <a href="tel:+12498760601">+1 (249) 876-0601</a>
       <a href="https://www.linkedin.com/in/raj-krishnan-vijayaraj-800727128/">LinkedIn</a>
+      <a href="https://github.com/unni12345">GitHub</a>
+      <a href="https://scholar.google.com/citations?hl=en&user=JRB869AAAAAJ">Google Scholar</a>
     </p>
   </header>
 
@@ -110,77 +173,137 @@
     <section>
       <h3>About</h3>
       <p>
-        I am an applied ML researcher with a background in Electrical Engineering (NIT Trichy) and an M.Eng from the University of Toronto. My work focuses on evaluating and improving the robustness of Large Language Models (LLMs) in clinical and agentic workflows. I specialize in perturbation-based testing, latent geometry analysis, and building privacy-aware, interpretable AI systems.
+        I'm a Machine Learning Engineer based in Toronto, currently building production GenAI and bioinformatics
+        infrastructure at Sanofi Vaccines Canada. My work spans the full stack of applied ML: shipping LLM and RAG
+        systems into production, building the cloud infrastructure and CI/CD pipelines they run on, and evaluating
+        model robustness and reliability before they reach users. I hold an M.Eng in Electrical &amp; Computer
+        Engineering from the University of Toronto and a B.Tech in Electrical and Electronics Engineering from
+        NIT Tiruchirappalli.
       </p>
     </section>
 
     <section>
-      <h3>Research Interests</h3>
-      <ul>
-        <li>LLM Robustness and Structured Perturbation</li>
-        <li>Geometric Evaluation and Latent Fragility</li>
-        <li>Multimodal Learning and Agentic Diagnostic Systems</li>
-        <li>LLM Privacy and Safe Deployment</li>
-      </ul>
+      <h3>Experience</h3>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Machine Learning Engineer (R&amp;D)</span>
+          <span class="job-dates">Nov 2025 &ndash; Present</span>
+        </div>
+        <div class="job-org">Sanofi Vaccines Canada, Toronto, Canada</div>
+        <ul>
+          <li>Cut model deployment time from 4 weeks to 2 days with CI/CD pipelines shipping 20 bioinformatics models to AWS HealthOmics across DEV/UAT/PROD, now used by 100+ research scientists.</li>
+          <li>Built the compliant multi-account infrastructure underneath (ECS Fargate, IAM/OIDC federation, SQS, S3, Lambda) with least-privilege promotion gates, now the reference architecture across Sanofi's R&amp;D platform.</li>
+          <li>Project lead and technical point of contact, directing 3 engineers; own production reliability (retry/DLQ/status propagation, CloudWatch metrics and alarms) and nanobody workflow orchestration.</li>
+          <li>Building an agentic auto-deploy layer that drives the framework end to end, removing the remaining manual promotion steps (in progress).</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Machine Learning Engineer</span>
+          <span class="job-dates">Jul 2024 &ndash; Oct 2025</span>
+        </div>
+        <div class="job-org">Appfabs (contracted to LexisNexis), Toronto, Canada</div>
+        <ul>
+          <li>Shipped production Text-to-SQL and RAG agents (Spark, LangChain, Hugging Face) with distributed multi-node inference on KubeRay and Docker, released through Jenkins.</li>
+          <li>Cut end-to-end query latency by 50% by reworking data processing pipelines, schema indexing, and high-throughput GraphQL/REST API gateways.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Applied Research Intern</span>
+          <span class="job-dates">May 2024 &ndash; Jul 2024</span>
+        </div>
+        <div class="job-org">Vector Institute, Toronto, Canada</div>
+        <ul>
+          <li>Fine-tuned LLaMA-3.1 across multi-GPU clusters with FSDP and served it behind low-latency vLLM endpoints.</li>
+          <li>Designed a diagnostic RAG system whose chain-of-verification step held hallucinated clinical entities under 1%.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Machine Learning Engineer (Mitacs Fellow)</span>
+          <span class="job-dates">Sep 2022 &ndash; May 2024</span>
+        </div>
+        <div class="job-org">Scribble Data, Toronto, Canada (concurrent with MEng)</div>
+        <ul>
+          <li>Benchmarked LoRA against INT8/INT4 quantization, cutting inference memory overhead at minimal accuracy loss and making edge deployment viable.</li>
+          <li>Built privacy-aware LLM agents for legal document analysis with domain masking and automated PII redaction.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Backend Developer</span>
+          <span class="job-dates">Jul 2019 &ndash; Nov 2021</span>
+        </div>
+        <div class="job-org">G2, Bengaluru, India</div>
+        <ul>
+          <li>Built high-throughput GraphQL APIs and async ETL (Rails, PostgreSQL, Sidekiq); cut batch data-export runtime from 72 hours to under 20.</li>
+        </ul>
+      </div>
     </section>
 
     <section>
       <h3>Selected Projects</h3>
       <ul>
-        <li><strong>Embeddings to Diagnosis</strong>: PCA-based fragility analysis for clinical LLMs (KDD 2025)</li>
-        <li><strong>Clinical Tiger</strong>: Multimodal RAG with GPT-4-Vision & ClinicalBERT</li>
-        <li><strong>Clinical Panda</strong>: LLM explanation pipeline using synthetic clinical notes</li>
-        <li><strong>PII Guard</strong>: LLM-based privacy masking and utility-preserving redaction</li>
-        <li><strong>Multimodal LLM</strong>: Medical vision-language model using BLIP-2 and FSDP</li>
-      </ul>
-    </section>
-
-    <section>
-      <h3>Résumé</h3>
-      <div class="resume-container">
-        <a href="/raj_kv_resume.pdf" class="resume-button" target="_blank">View Résumé (PDF)</a>
-      </div>
-    </section>
-
-    <section>
-      <h3>Experience</h3>
-      <ul>
-        <li><strong>LLM Engineer</strong>, LexisNexis/Appfabs (2024–Now)</li>
-        <li><strong>ML Associate</strong>, Vector Institute (2024)</li>
-        <li><strong>ML Engineer</strong>, Scribble Data (2022–2024)</li>
-        <li><strong>Backend Engineer</strong>, G2 (2019–2021)</li>
+        <li><strong>Eval Harness (SPAR)</strong> &mdash; Score-based robustness metrics for computer-use agents under prompt injection.</li>
+        <li><strong>Multimodal Clinical RAG</strong> &mdash; GPT-4V + ClinicalBERT retrieval with chain-of-verification grounding.</li>
+        <li><strong>Diagnostic LLM Audit</strong> &mdash; Diagnostic LLMs fine-tuned on synthetic notes; perturbation-audited for stability.</li>
       </ul>
     </section>
 
     <section>
       <h3>Education</h3>
-      <ul>
-        <li><strong>University of Toronto</strong> – M.Eng in Electrical and Computer Engineering (2022–2023)</li>
-        <li><strong>NIT Trichy</strong> – B.Tech in Electrical and Electronics Engineering (2015–2019)</li>
-      </ul>
+      <div class="edu-item">
+        <div class="edu-title">University of Toronto &mdash; M.Eng, Electrical &amp; Computer Engineering</div>
+        <div>GPA: 3.94/4.00 &middot; 2022 &ndash; 2023</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-title">NIT Tiruchirappalli &mdash; B.Tech, Electrical and Electronics Engineering</div>
+        <div>2015 &ndash; 2019</div>
+      </div>
     </section>
 
     <section>
       <h3>Publications</h3>
-      <ul>
-        <li><strong>Embeddings to Diagnosis</strong>, Agentic & GenAI Evaluation Workshop @ KDD 2025</li>
-        <li><a href="https://ieeexplore.ieee.org/document/7931882">ARMatron</a>, IEEE Robotics & Automation Society (RAHA 2016)</li>
-      </ul>
+      <div class="pub-item">
+        R. K. Vijayaraj. <em>Embeddings to Diagnosis: Latent Fragility under Agentic Perturbations in Clinical LLMs.</em>
+        Workshop on Evaluation of Generative AI, KDD 2025.
+        <a href="https://arxiv.org/abs/2507.21188">arXiv:2507.21188</a>
+      </div>
     </section>
 
     <section>
-      <h3>Awards</h3>
-      <ul>
-        <li>Mitacs Business Strategy Internship (2022)</li>
-        <li>PEAK Giver Award – G2 (2020)</li>
-        <li>France Travel Grant (2019)</li>
-        <li>National Topper in Mathematics – AISSCE (2015)</li>
-      </ul>
+      <h3>Skills</h3>
+      <dl class="skills">
+        <dt>ML &amp; GenAI</dt>
+        <dd>PyTorch, Hugging Face, LangChain, RAG, LoRA/PEFT, INT8/INT4 quantization, FSDP, vLLM</dd>
+
+        <dt>Evaluation &amp; Reliability</dt>
+        <dd>LLM evals, perturbation/robustness auditing, adversarial red-teaming, grounding</dd>
+
+        <dt>Systems &amp; Cloud</dt>
+        <dd>AWS (HealthOmics, ECS, SQS, S3, Lambda), Docker, Kubernetes/KubeRay, Terraform, Spark, CI/CD</dd>
+
+        <dt>Languages &amp; Data</dt>
+        <dd>Python, SQL, C++, Ruby, Snowflake, GraphQL, REST, PostgreSQL</dd>
+      </dl>
+    </section>
+
+    <section>
+      <h3>R&eacute;sum&eacute;</h3>
+      <div class="resume-container">
+        <a href="raj_kv_resume.pdf" class="resume-button" target="_blank">View R&eacute;sum&eacute; (PDF)</a>
+      </div>
     </section>
   </main>
 
   <footer>
-    &copy; 2024 Raj Krishnan V. Design inspired by academic pages.
+    &copy; 2026 Raj Krishnan Vijayaraj.
   </footer>
 </body>
 </html>
